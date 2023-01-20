@@ -17,9 +17,9 @@ public class PanelCarrera extends javax.swing.JPanel {
      */
     public PanelCarrera(VentanaPrincipal ventana) {
         initComponents();
-        MotoCorredorThread moto1= new MotoCorredorThread("", Barra1);
+        MotoCorredorThread moto1= new MotoCorredorThread("", Barra1,lblCorredor1);
         moto1.start();
-        MotoCorredorThread moto2= new MotoCorredorThread("", Barra2);
+        MotoCorredorThread moto2= new MotoCorredorThread("", Barra2,lblCorredor2);
         moto2.start();
     }
 
@@ -34,25 +34,43 @@ public class PanelCarrera extends javax.swing.JPanel {
 
         Barra1 = new javax.swing.JProgressBar();
         Barra2 = new javax.swing.JProgressBar();
+        lblCorredor1 = new javax.swing.JLabel();
+        lblCorredor2 = new javax.swing.JLabel();
+
+        Barra1.setStringPainted(true);
+
+        Barra2.setStringPainted(true);
+
+        lblCorredor1.setText("0/0");
+
+        lblCorredor2.setText("0/0");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(157, 157, 157)
+                .addGap(29, 29, 29)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(Barra2, javax.swing.GroupLayout.DEFAULT_SIZE, 419, Short.MAX_VALUE)
+                    .addComponent(Barra1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(Barra2, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Barra1, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(163, Short.MAX_VALUE))
+                    .addComponent(lblCorredor2)
+                    .addComponent(lblCorredor1))
+                .addContainerGap(17, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(58, 58, 58)
-                .addComponent(Barra1, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Barra1, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblCorredor1))
                 .addGap(18, 18, 18)
-                .addComponent(Barra2, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Barra2, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblCorredor2))
                 .addContainerGap(234, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -61,5 +79,7 @@ public class PanelCarrera extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JProgressBar Barra1;
     private javax.swing.JProgressBar Barra2;
+    private javax.swing.JLabel lblCorredor1;
+    private javax.swing.JLabel lblCorredor2;
     // End of variables declaration//GEN-END:variables
 }

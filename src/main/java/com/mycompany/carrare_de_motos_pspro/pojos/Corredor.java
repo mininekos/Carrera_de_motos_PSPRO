@@ -10,4 +10,5 @@ package com.mycompany.carrare_de_motos_pspro.pojos;
  */
 public class Corredor {
     
+    private String nombre;
 }
