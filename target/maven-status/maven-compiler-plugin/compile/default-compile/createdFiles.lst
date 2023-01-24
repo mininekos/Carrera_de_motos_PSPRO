@@ -1,9 +1,8 @@
 com\mycompany\carrare_de_motos_pspro\Carrare_de_motos_PSPRO.class
-com\mycompany\carrare_de_motos_pspro\Vista\PanelConfiguracion.class
 com\mycompany\carrare_de_motos_pspro\hilos\MotoCorredorThread.class
-com\mycompany\carrare_de_motos_pspro\Vista\PanelInicio.class
-com\mycompany\carrare_de_motos_pspro\Vista\PanelPodio.class
+com\mycompany\carrare_de_motos_pspro\Vista\PanelCarrera$2.class
 com\mycompany\carrare_de_motos_pspro\Vista\VentanaPrincipal.class
 com\mycompany\carrare_de_motos_pspro\pojos\Corredor.class
+com\mycompany\carrare_de_motos_pspro\Vista\PanelCarrera$1.class
 com\mycompany\carrare_de_motos_pspro\Vista\VentanaPrincipal$1.class
 com\mycompany\carrare_de_motos_pspro\Vista\PanelCarrera.class

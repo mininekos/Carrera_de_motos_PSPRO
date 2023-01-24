@@ -16,35 +16,80 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Component id="Barra2" pref="419" max="32767" attributes="0"/>
-                  <Component id="Barra1" max="32767" attributes="0"/>
-              </Group>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
+          <Group type="102" attributes="0">
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="btnStart" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="65" max="-2" attributes="0"/>
+              <Component id="btnPause" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
+              <Component id="btnReanudar" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
+              <Component id="btnSalir" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+          </Group>
+          <Group type="102" alignment="1" attributes="0">
+              <EmptySpace pref="27" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="lblCorredor2" min="-2" max="-2" attributes="0"/>
-                  <Component id="lblCorredor1" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblNombreCorredor2" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblNombreCorredor1" min="-2" max="-2" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="Barra2" max="32767" attributes="0"/>
+                          <Component id="Barra1" min="-2" pref="419" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="lblCorredor2" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblCorredor1" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
               </Group>
-              <EmptySpace pref="17" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
+          </Group>
+          <Group type="102" attributes="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="212" max="-2" attributes="0"/>
+                      <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
+                      <Component id="lblPodio" min="-2" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+              <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="58" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="jLabel1" min="-2" pref="34" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
+              <Component id="lblNombreCorredor1" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="Barra1" alignment="3" min="-2" pref="20" max="-2" attributes="0"/>
                   <Component id="lblCorredor1" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
+              <Component id="lblNombreCorredor2" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="Barra2" alignment="3" min="-2" pref="20" max="-2" attributes="0"/>
                   <Component id="lblCorredor2" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="234" max="32767" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="lblPodio" min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="30" max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="btnStart" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnPause" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnSalir" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnReanudar" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="86" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -68,6 +113,55 @@
     <Component class="javax.swing.JLabel" name="lblCorredor2">
       <Properties>
         <Property name="text" type="java.lang.String" value="0/0"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnStart">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Start"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnStartActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnPause">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Pause"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnPauseActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnSalir">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Salir"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel1">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="CARRERA "/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblNombreCorredor1">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="jLabel2"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblNombreCorredor2">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="jLabel3"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnReanudar">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Reanudar"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnReanudarActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblPodio">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Podio="/>
       </Properties>
     </Component>
   </SubComponents>
