@@ -22,9 +22,10 @@ public class MotoCorredorThread extends Thread{
     JLabel lbl;
     int vuelta;
     int avance;
-    private final int MAXVUELTA=5;
+    private final int MAXVUELTA=5,CAIDA=1;
+    private boolean caido;
     private boolean stop;
-    private ArrayList<Corredor> corredores;
+    private static ArrayList<Corredor> corredores;
     public MotoCorredorThread(Corredor corredor,JProgressBar barra, JLabel lbl,ArrayList<Corredor> corredores ) {
         
         this.corredor=corredor;
@@ -34,6 +35,7 @@ public class MotoCorredorThread extends Thread{
         this.lbl=lbl;
         lbl.setText(vuelta+"/"+MAXVUELTA);
         stop=false;
+        caido=false;
         this.corredores=corredores;
     }
 
@@ -45,14 +47,20 @@ public class MotoCorredorThread extends Thread{
         stop=false;
         notify();
     }
+
+    public boolean isStop() {
+        return stop;
+    }
     
     @Override
     public synchronized void run() {
         
         try{
-            while(vuelta<MAXVUELTA){
+            while(vuelta<MAXVUELTA && caido==false){
                 if(stop==false){  
                     avance+=rnd.nextInt(1,5);
+                    if(CAIDA==rnd.nextInt(1,100))
+                        caido=true;
                     barra.setValue(avance);
                     if(barra.getValue()==100){
                         barra.setValue(0);
@@ -64,10 +72,18 @@ public class MotoCorredorThread extends Thread{
                 }
                 else{
                     wait();
+                    
                 }
             }
+            if (caido==false){
                barra.setValue(100);
                corredores.add(corredor);
+               lbl.setText("Terminado");
+            }
+            else{
+                lbl.setText("Accidente");
+                barra.setEnabled(false);
+            }
               
         }
         catch(Exception e){

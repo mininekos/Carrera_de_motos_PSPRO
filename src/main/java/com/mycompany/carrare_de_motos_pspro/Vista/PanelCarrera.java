@@ -25,8 +25,7 @@ public class PanelCarrera extends javax.swing.JPanel {
         corredor2=new Corredor("Valentino Rossi");
         lblNombreCorredor1.setText(corredor1.getNombre());
         lblNombreCorredor2.setText(corredor2.getNombre());
-        corredores= new ArrayList<Corredor>();
-        iniciarHilos();    
+        corredores= new ArrayList<Corredor>();   
         for (Corredor corredor : corredores) {
             lblPodio.setText(lblPodio.getText()+" "+corredor.getNombre());
         }
@@ -53,14 +52,35 @@ public class PanelCarrera extends javax.swing.JPanel {
         lblNombreCorredor2 = new javax.swing.JLabel();
         btnReanudar = new javax.swing.JButton();
         lblPodio = new javax.swing.JLabel();
+        btnRest = new javax.swing.JButton();
 
         Barra1.setStringPainted(true);
+        Barra1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                Barra1MouseClicked(evt);
+            }
+        });
 
         Barra2.setStringPainted(true);
+        Barra2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                Barra2MouseClicked(evt);
+            }
+        });
 
         lblCorredor1.setText("0/0");
+        lblCorredor1.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                lblCorredor1PropertyChange(evt);
+            }
+        });
 
         lblCorredor2.setText("0/0");
+        lblCorredor2.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                lblCorredor2PropertyChange(evt);
+            }
+        });
 
         btnStart.setText("Start");
         btnStart.addActionListener(new java.awt.event.ActionListener() {
@@ -77,6 +97,11 @@ public class PanelCarrera extends javax.swing.JPanel {
         });
 
         btnSalir.setText("Salir");
+        btnSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalirActionPerformed(evt);
+            }
+        });
 
         jLabel1.setText("CARRERA ");
 
@@ -93,6 +118,13 @@ public class PanelCarrera extends javax.swing.JPanel {
 
         lblPodio.setText("Podio=");
 
+        btnRest.setText("Reset");
+        btnRest.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRestActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -100,13 +132,15 @@ public class PanelCarrera extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(btnStart)
-                .addGap(65, 65, 65)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnPause)
-                .addGap(52, 52, 52)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnReanudar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnRest)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnSalir)
-                .addContainerGap())
+                .addGap(37, 37, 37))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(27, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -155,29 +189,86 @@ public class PanelCarrera extends javax.swing.JPanel {
                     .addComponent(btnStart)
                     .addComponent(btnPause)
                     .addComponent(btnSalir)
-                    .addComponent(btnReanudar))
+                    .addComponent(btnReanudar)
+                    .addComponent(btnRest))
                 .addGap(86, 86, 86))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnStartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStartActionPerformed
-        if(lblCorredor1.getText().equals("5/5") || lblCorredor1.getText().equals("0/5")){
+    
+            iniciarHilos();
             moto1.start();
             moto2.start();
-        }
+            btnStart.setEnabled(false);
+            corredores.clear();
+            lblPodio.setText("Podio : ");
     }//GEN-LAST:event_btnStartActionPerformed
 
     private void btnPauseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPauseActionPerformed
         
         moto1.pausar();
         moto2.pausar();
+        btnStart.setEnabled(true);
     }//GEN-LAST:event_btnPauseActionPerformed
 
     private void btnReanudarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReanudarActionPerformed
         
         moto1.reanudar();
         moto2.reanudar();
+        btnStart.setEnabled(false);
     }//GEN-LAST:event_btnReanudarActionPerformed
+
+    private void lblCorredor1PropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_lblCorredor1PropertyChange
+        
+        String cadena="";
+        
+        for (Corredor corredor : corredores) {
+            cadena+=corredor.getNombre()+" ";
+        }
+        lblPodio.setText("Podio : "+cadena);
+    }//GEN-LAST:event_lblCorredor1PropertyChange
+
+    private void lblCorredor2PropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_lblCorredor2PropertyChange
+        String cadena="";
+        for (Corredor corredor : corredores) {
+            cadena+=corredor.getNombre()+" ";
+        }
+        lblPodio.setText("Podio : "+cadena);
+    }//GEN-LAST:event_lblCorredor2PropertyChange
+
+    private void Barra1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Barra1MouseClicked
+        
+        if(moto1.isStop())
+            moto1.reanudar();
+        else
+            moto1.pausar();
+
+    }//GEN-LAST:event_Barra1MouseClicked
+
+    private void Barra2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Barra2MouseClicked
+        if(moto2.isStop())
+            moto2.reanudar();
+        else
+            moto2.pausar();
+    }//GEN-LAST:event_Barra2MouseClicked
+
+    private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_btnSalirActionPerformed
+
+    private void btnRestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRestActionPerformed
+        btnStart.setEnabled(true);
+        moto1.pausar();
+        moto2.pausar();
+        Barra1.setValue(0);
+        Barra2.setValue(0);
+        lblPodio.setText("Podio : ");
+        Barra1.setEnabled(true);
+        Barra2.setEnabled(true);
+        lblCorredor1.setText("0/5");
+        lblCorredor2.setText("0/5");
+    }//GEN-LAST:event_btnRestActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -185,6 +276,7 @@ public class PanelCarrera extends javax.swing.JPanel {
     private javax.swing.JProgressBar Barra2;
     private javax.swing.JButton btnPause;
     private javax.swing.JButton btnReanudar;
+    private javax.swing.JButton btnRest;
     private javax.swing.JButton btnSalir;
     private javax.swing.JButton btnStart;
     private javax.swing.JLabel jLabel1;
